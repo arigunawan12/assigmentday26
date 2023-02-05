@@ -72,12 +72,14 @@ function App() {
   };
 
   const handleDelete = (id) => {
-    Axios({
-      method: "post",
-      url: `http://localhost:7777/product/delete/${id}`,
-    }).then(function (response) {
-      getData();
-    });
+    if (window.confirm("are you sure to delete?")) {
+      Axios({
+        method: "post",
+        url: `http://localhost:7777/product/delete/${id}`,
+      }).then(function (response) {
+        getData();
+      });
+    }
   };
 
   useEffect(() => {
